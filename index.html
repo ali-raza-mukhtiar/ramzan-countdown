@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramadan Countdown</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('https://www.calendarr.com/layout/assets/image_generator/countdown/background/countdown-ramadan.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: rgb(255, 255, 255);
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        .countdown-container {
+            text-align: center;
+        }
+        h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #FFD700;
+            margin-bottom: 20px;
+        }
+        .timer {
+            display: flex;
+            justify-content: center;
+            font-size: 6rem;
+            font-weight: bold;
+        }
+        .timer span {
+            margin: 0 10px;
+        }
+        #seconds {
+            color: #FFD700;
+        }
+        .label {
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            margin-top: -20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="countdown-container">
+        <h1>RAMADAN 2025</h1>
+        <div class="timer">
+            <span id="days">00</span> :
+            <span id="hours">00</span> :
+            <span id="minutes">00</span> :
+            <span id="seconds">00</span>
+        </div>
+        <div class="timer-labels">
+            <span class="label">Days</span>
+            <span class="label">Hours</span>
+            <span class="label">Minutes</span>
+            <span class="label">Seconds</span>
+        </div>
+    </div>
+
+    <script>
+        function updateCountdown() {
+            let ramadanDate = new Date("February 28, 2025 00:00:00").getTime();
+            let now = new Date().getTime();
+            let timeLeft = ramadanDate - now;
+
+            let days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            let hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            let minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            let seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            document.getElementById("days").textContent = days;
+            document.getElementById("hours").textContent = hours;
+            document.getElementById("minutes").textContent = minutes;
+            document.getElementById("seconds").textContent = seconds;
+        }
+        
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html>
